@@ -1,0 +1,29 @@
+{
+  "name": "roadmap",
+  "title": "Roadmap",
+  "template": "templates/template.html",
+  "content": "content/roadmap.html",
+  "output": "public/roadmap.html",
+  "minify": false,
+  "minify-version": 0,
+  "pagination": false,
+  "pagination-items-per-page": 0,
+  "pagination-template": "",
+  "pagination-separator": "",
+  "pagination-pages": 0,
+  "dependencies": [
+    "content/roadmap.html",
+    "templates/head.html",
+    "templates/template.html"
+  ],
+  "reqs": [
+    "public/architecture.html",
+    "public/assets/css/style.css",
+    "public/assets/js/script.js",
+    "public/docs.html",
+    "public/index.html",
+    "public/product.html",
+    "public/roadmap.html",
+    "public/security.html"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "name": "docs/security",
+  "title": "Security model",
+  "template": "templates/template.html",
+  "content": "content/docs/security.html",
+  "output": "public/docs/security.html",
+  "minify": false,
+  "minify-version": 0,
+  "pagination": false,
+  "pagination-items-per-page": 0,
+  "pagination-template": "",
+  "pagination-separator": "",
+  "pagination-pages": 0,
+  "dependencies": [
+    "content/docs/security.html",
+    "templates/docs-nav.html",
+    "templates/head.html",
+    "templates/template.html"
+  ],
+  "reqs": [
+    "public/architecture.html",
+    "public/assets/css/style.css",
+    "public/assets/js/script.js",
+    "public/docs.html",
+    "public/docs/agent.html",
+    "public/docs/collection.html",
+    "public/docs/concepts.html",
+    "public/docs/data.html",
+    "public/docs/deployment.html",
+    "public/docs/getting-started.html",
+    "public/docs/incidents.html",
+    "public/docs/rules-alerts.html",
+    "public/docs/security.html",
+    "public/index.html",
+    "public/product.html",
+    "public/roadmap.html",
+    "public/security.html"
+  ]
+}

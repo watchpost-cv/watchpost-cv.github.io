@@ -1,0 +1,91 @@
+{
+  "tracked": [
+    {
+      "name": "/",
+      "title": "Open-source monitoring and operations",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "product",
+      "title": "Product",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "architecture",
+      "title": "Architecture",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "security",
+      "title": "Security",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "roadmap",
+      "title": "Roadmap",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "docs",
+      "title": "Documentation",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "docs/getting-started",
+      "title": "Getting started",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "docs/concepts",
+      "title": "Core concepts",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "docs/collection",
+      "title": "Collection",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "docs/rules-alerts",
+      "title": "Rules and alerts",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "docs/incidents",
+      "title": "Incidents",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "docs/agent",
+      "title": "Agent",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "docs/deployment",
+      "title": "Deployment",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "docs/security",
+      "title": "Security model",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "docs/data",
+      "title": "Data and retention",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "assets/css/style",
+      "title": "style",
+      "content-ext": ".css",
+      "output-ext": ".css"
+    },
+    {
+      "name": "assets/js/script",
+      "title": "script",
+      "content-ext": ".js",
+      "output-ext": ".js"
+    }
+  ]
+}
