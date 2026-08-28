@@ -1,9 +1,9 @@
 # HANDOVER.md
 v0.0.5
 
-Project status: WP01R through WP05R are complete as of 2026-08-28. Paired Linux
-collectors have foreground and hardened systemd lifecycle commands in per-user
-and explicit system modes. Persistent delivery remains WP06R. Public copy
+Project status: WP01R through WP06R are complete as of 2026-08-28. Paired Linux
+collectors now persist a bounded queue, retain sequence state, deliver in order,
+delete only acknowledged data, and back off across disconnection. Public copy
 must distinguish working foundations from partial workflows. In particular,
 Watchpost does not yet ship a remote Linux collector; never imply that enrolling
 a post starts collection. Rebuild with Nift and commit `public/` before the

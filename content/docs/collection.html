@@ -8,7 +8,7 @@ TLS   example.com:443  server name: example.com</code></pre><p>A failed check re
   --token ONE_USE_TOKEN
 ./watchpost collector install
 ./watchpost collector status
-./watchpost collector logs</code></pre><p>The token expires after ten minutes and works once. It is exchanged for a post-scoped credential stored in a private local configuration. Installation copies the binary to a stable path and enables a hardened per-user systemd service. Use root with <code>--system</code> only for a deliberate machine-wide service.</p><div class="callout"><strong>Current boundary</strong><p>Sampling, pairing, and service lifecycle are implemented. Persistent delivery, retry, and replay arrive in WP06R.</p></div>
+./watchpost collector logs</code></pre><p>The token expires after ten minutes and works once. It is exchanged for a post-scoped credential stored in a private local configuration. Installation copies the binary to a stable path and enables a hardened per-user systemd service. Use root with <code>--system</code> only for a deliberate machine-wide service.</p><p>Before transmission, each sample batch and its sequence range are written atomically to a private local queue. Disconnection retains up to 256 batches or 8 MiB, retries use jittered exponential backoff, and only an acknowledgement through the batch sequence removes it. Queue saturation is recorded as <code>collector.dropped_samples</code> rather than hidden.</p>
 <h3>Submit one observation</h3><pre><code>curl --request POST http://watchpost-host:8080/api/v1/observations \
   --header "Authorization: Bearer $COLLECTOR_SECRET" \
   --header "Content-Type: application/json" \
