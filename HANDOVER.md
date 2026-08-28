@@ -8,6 +8,10 @@ and links to the resource survey. The two-process restart gate is green. Public 
 must distinguish working foundations from partial workflows. In particular,
 Watchpost ships the remote Linux collector in the same binary, but enrolling a
 post alone does not start collection: the operator must pair and install it.
+Enrollment now records an optional address/hostname and asks for the Watchpost
+URL reachable from the post. Documentation must explain that the collector
+connects outbound, why a remote post cannot use a loopback URL, and the
+archive/edit/confirmed-permanent-delete lifecycle.
 Rules are listable and enableable or disableable. Rebuild with Nift and commit `public/` before the
 source repository at every recovery checkpoint.
 
