@@ -46,6 +46,11 @@
       "template": "templates/template.html"
     },
     {
+      "name": "docs/agent-architecture",
+      "title": "Agent architecture",
+      "template": "templates/template.html"
+    },
+    {
       "name": "docs/rules-alerts",
       "title": "Rules and alerts",
       "template": "templates/template.html"
