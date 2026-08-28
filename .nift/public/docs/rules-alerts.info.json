@@ -22,6 +22,7 @@
     "public/assets/css/style.css",
     "public/assets/js/script.js",
     "public/docs.html",
+    "public/docs/agent-architecture.html",
     "public/docs/agent.html",
     "public/docs/caddy.html",
     "public/docs/collection.html",

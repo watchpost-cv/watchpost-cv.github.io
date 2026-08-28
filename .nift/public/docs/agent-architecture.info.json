@@ -1,9 +1,9 @@
 {
-  "name": "docs/concepts",
-  "title": "Core concepts",
+  "name": "docs/agent-architecture",
+  "title": "Agent architecture",
   "template": "templates/template.html",
-  "content": "content/docs/concepts.html",
-  "output": "public/docs/concepts.html",
+  "content": "content/docs/agent-architecture.html",
+  "output": "public/docs/agent-architecture.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/docs/concepts.html",
+    "content/docs/agent-architecture.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"
