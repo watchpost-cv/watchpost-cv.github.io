@@ -1,8 +1,9 @@
 # HANDOVER.md
 v0.0.5
 
-Project status: WP01R and WP02R are complete as of 2026-08-28. Collector
-protocol v1 is versioned, bounded and atomically acknowledged. Public copy
+Project status: WP01R through WP03R are complete as of 2026-08-28. The supplied
+binary can sample Linux host resources with `watchpost collector sample`, but
+pairing and delivery remain WP04R/WP06R. Public copy
 must distinguish working foundations from partial workflows. In particular,
 Watchpost does not yet ship a remote Linux collector; never imply that enrolling
 a post starts collection. Rebuild with Nift and commit `public/` before the
