@@ -1,7 +1,8 @@
 # HANDOVER.md
 v0.0.5
 
-Project status: WP01R through WP17R are complete as of 2026-08-28. Host creation
+Project status: WP01R through WP18R are complete as of 2026-08-28. This is a
+locally proven Linux development candidate, not a public production release. Host creation
 can add starter rules, continues into one-use pairing, waits for first delivery,
 and links to the resource survey. The two-process restart gate is green. Public copy
 must distinguish working foundations from partial workflows. In particular,

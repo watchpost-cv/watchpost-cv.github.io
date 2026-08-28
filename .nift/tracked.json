@@ -86,6 +86,11 @@
       "template": "templates/template.html"
     },
     {
+      "name": "docs/limitations",
+      "title": "Current limitations",
+      "template": "templates/template.html"
+    },
+    {
       "name": "assets/css/style",
       "title": "style",
       "content-ext": ".css",
