@@ -22,7 +22,23 @@
     nav?.classList.toggle('open', !open);
   });
   document.querySelectorAll('pre').forEach((pre) => {
-    const source = pre.innerText;
+    const code = pre.querySelector('code');
+    const source = code?.textContent || pre.innerText;
+    if (code) {
+      const token = /("(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|#.*$|\/\/.*$|\b(?:true|false|null|go|build|export|curl|POST|GET|systemctl|sudo)\b|--?[a-z][\w-]*|\b\d+(?:\.\d+)?\b)/gim;
+      const fragment = document.createDocumentFragment();
+      let cursor = 0;
+      for (const match of source.matchAll(token)) {
+        fragment.append(document.createTextNode(source.slice(cursor, match.index)));
+        const span = document.createElement('span'), value = match[0];
+        span.className = /^['"]/.test(value) ? 'tok-string' : /^(#|\/\/)/.test(value) ? 'tok-comment' : /^-/.test(value) ? 'tok-option' : /^\d/.test(value) ? 'tok-number' : 'tok-keyword';
+        span.textContent = value;
+        fragment.append(span);
+        cursor = match.index + value.length;
+      }
+      fragment.append(document.createTextNode(source.slice(cursor)));
+      code.replaceChildren(fragment);
+    }
     const copy = document.createElement('button');
     copy.className = 'copy-button';
     copy.type = 'button';
