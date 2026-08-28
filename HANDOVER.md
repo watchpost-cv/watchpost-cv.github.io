@@ -1,7 +1,7 @@
 # HANDOVER.md
 v0.0.5
 
-Project status: WP01R through WP11R are complete as of 2026-08-28. Host creation
+Project status: WP01R through WP12R are complete as of 2026-08-28. Host creation
 can add starter rules, continues into one-use pairing, waits for first delivery,
 and links to the resource survey. The two-process restart gate is green. Public copy
 must distinguish working foundations from partial workflows. In particular,
