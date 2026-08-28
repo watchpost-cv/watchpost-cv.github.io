@@ -5,7 +5,10 @@ DNS   api.internal.example
 TLS   example.com:443  server name: example.com</code></pre><p>A failed check reports failure rather than manufacturing a healthy value.</p>
 <h2>Monitor a Linux machine</h2><p>Enroll a host post, open <strong>Collectors</strong>, and generate a command. Run it on the monitored machine:</p><pre><code>./watchpost collector pair \
   --server https://watchpost.example.com \
-  --token ONE_USE_TOKEN</code></pre><p>The token expires after ten minutes and works once. It is exchanged for a post-scoped credential stored in a private local configuration. Remote pairing requires HTTPS; HTTP is accepted only on loopback.</p><div class="callout"><strong>Current boundary</strong><p>Sampling and secure pairing are implemented. Persistent service operation arrives in WP05R and delivery/replay in WP06R.</p></div>
+  --token ONE_USE_TOKEN
+./watchpost collector install
+./watchpost collector status
+./watchpost collector logs</code></pre><p>The token expires after ten minutes and works once. It is exchanged for a post-scoped credential stored in a private local configuration. Installation copies the binary to a stable path and enables a hardened per-user systemd service. Use root with <code>--system</code> only for a deliberate machine-wide service.</p><div class="callout"><strong>Current boundary</strong><p>Sampling, pairing, and service lifecycle are implemented. Persistent delivery, retry, and replay arrive in WP06R.</p></div>
 <h3>Submit one observation</h3><pre><code>curl --request POST http://watchpost-host:8080/api/v1/observations \
   --header "Authorization: Bearer $COLLECTOR_SECRET" \
   --header "Content-Type: application/json" \
