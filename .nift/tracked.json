@@ -66,6 +66,16 @@
       "template": "templates/template.html"
     },
     {
+      "name": "docs/caddy",
+      "title": "Caddy HTTPS",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "docs/nginx",
+      "title": "nginx HTTPS",
+      "template": "templates/template.html"
+    },
+    {
       "name": "docs/security",
       "title": "Security model",
       "template": "templates/template.html"
