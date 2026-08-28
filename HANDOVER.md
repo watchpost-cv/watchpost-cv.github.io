@@ -1,12 +1,13 @@
 # HANDOVER.md
 v0.0.5
 
-Project status: WP01R through WP08R are complete as of 2026-08-28. Host creation
+Project status: WP01R through WP09R are complete as of 2026-08-28. Host creation
 can add starter rules, continues into one-use pairing, waits for first delivery,
 and links to the resource survey. The two-process restart gate is green. Public copy
 must distinguish working foundations from partial workflows. In particular,
-Watchpost does not yet ship a remote Linux collector; never imply that enrolling
-a post starts collection. Rebuild with Nift and commit `public/` before the
+Watchpost ships the remote Linux collector in the same binary, but enrolling a
+post alone does not start collection: the operator must pair and install it.
+Rules are listable and enableable or disableable. Rebuild with Nift and commit `public/` before the
 source repository at every recovery checkpoint.
 
 This is a living handover for working effectively in a Nift project.
