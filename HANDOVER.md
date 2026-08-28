@@ -1,6 +1,12 @@
 # HANDOVER.md
 v0.0.5
 
+Project status: WP01R reconciled the implementation on 2026-08-28. Public copy
+must distinguish working foundations from partial workflows. In particular,
+Watchpost does not yet ship a remote Linux collector; never imply that enrolling
+a post starts collection. Rebuild with Nift and commit `public/` before the
+source repository at every recovery checkpoint.
+
 This is a living handover for working effectively in a Nift project.
 
 Canonical version:
