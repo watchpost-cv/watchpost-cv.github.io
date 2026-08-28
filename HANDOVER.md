@@ -1,9 +1,9 @@
 # HANDOVER.md
 v0.0.5
 
-Project status: WP01R through WP07R are complete as of 2026-08-28. Collector
-health now exposes never connected, healthy, stale, offline, skewed, rejected,
-partial, and revoked from durable facts. Public copy
+Project status: WP01R through WP08R are complete as of 2026-08-28. Host creation
+can add starter rules, continues into one-use pairing, waits for first delivery,
+and links to the resource survey. The two-process restart gate is green. Public copy
 must distinguish working foundations from partial workflows. In particular,
 Watchpost does not yet ship a remote Linux collector; never imply that enrolling
 a post starts collection. Rebuild with Nift and commit `public/` before the
