@@ -41,6 +41,11 @@
       "template": "templates/template.html"
     },
     {
+      "name": "docs/posts",
+      "title": "Posts",
+      "template": "templates/template.html"
+    },
+    {
       "name": "docs/collection",
       "title": "Collection",
       "template": "templates/template.html"
@@ -83,6 +88,11 @@
     {
       "name": "docs/security",
       "title": "Security model",
+      "template": "templates/template.html"
+    },
+    {
+      "name": "docs/verification",
+      "title": "Verification and hardening",
       "template": "templates/template.html"
     },
     {

@@ -318,3 +318,28 @@ After website changes:
 Use the product vocabulary established in the application repository's
 `HANDOVER.md`: Watchpost, target, collector, signal, event, rule, alert,
 incident, action, and fleet.
+
+### Documentation page ownership (current)
+
+Each page owns one responsibility and links rather than duplicates:
+
+- `docs/posts` — canonical post model: what a post is and is not, post kinds,
+  monitoring methods, addresses, lifecycle/identity, health and survey.
+- `docs/agent-architecture` — the separate Watchpost Agent: installation,
+  pairing lifecycle, outbound telemetry delivery and queueing, local
+  management, and trust boundaries.
+- `docs/collection` — how observations enter Watchpost: checks, agent push,
+  SNMPv3, logs, quality, and device scope.
+- `docs/security` — authentication and sessions, first-administrator bootstrap
+  tokens, explicit reverse-proxy trust, audit guarantees and safe failures.
+- `docs/verification` — what has been exercised and what has not been proven,
+  with the boundary of every gate.
+- `docs/deployment`, `docs/caddy`, `docs/nginx` — operator configuration for
+  TLS and trusted proxies, including agent remote administration.
+- `docs/limitations` — unsupported platforms, incomplete integrations, and
+  non-claims; links to verification.
+
+New or revised pages must be registered in `.nift/tracked.json` and the
+navigation in `templates/docs-nav.html`, then rebuilt with Nift and committed
+in `public/` before the source repository. Existing pages may consolidate
+moved material into `docs/posts` rather than keep competing explanations.

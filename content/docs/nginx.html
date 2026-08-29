@@ -1,12 +1,53 @@
-<main class="shell docs-layout">@input("templates/docs-nav.html")<article class="docs-content"><p class="eyebrow">Docs · Deploy</p><h1>Serve Watchpost with nginx</h1><p class="lede">Terminate HTTPS at nginx while Watchpost listens only on the local loopback interface.</p><h2>Start Watchpost</h2><pre><code class="language-sh">./watchpost --listen 127.0.0.1:8080 --secure-cookies</code></pre><h2>Server block</h2><pre><code class="language-nginx">server {
-    listen 443 ssl http2;
-    server_name watchpost.example.com;
-    ssl_certificate /etc/letsencrypt/live/watchpost.example.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/watchpost.example.com/privkey.pem;
+<main class="shell docs-layout">@input("templates/docs-nav.html")<article class="docs-content"><p class="eyebrow">Docs · Deploy</p><h1>Serve Watchpost with nginx</h1><p class="lede">Terminate HTTPS at nginx while Watchpost listens only on the local loopback interface.</p>
+<h2>Start Watchpost</h2><pre><code class="language-sh">./watchpost --listen 127.0.0.1:8080 --secure-cookies</code></pre>
+<h2>Server block</h2><pre><code class="language-nginx">server {
+listen 443 ssl http2;
+server_name watchpost.example.com;
+ssl_certificate /etc/letsencrypt/live/watchpost.example.com/fullchain.pem;
+ssl_certificate_key /etc/letsencrypt/live/watchpost.example.com/privkey.pem;
 
-    location / {
-        proxy_pass http://127.0.0.1:8080;
-        proxy_http_version 1.1;
-        proxy_set_header Host $host;
-    }
-}</code></pre><p>Watchpost does not use forwarded client-IP or scheme headers for authorization. Loopback binding, TLS configuration, and firewall policy remain the deployment boundary.</p></article></main>
+location / {
+proxy_pass http://127.0.0.1:8080;
+proxy_http_version 1.1;
+proxy_set_header Host $host;
+}
+}</code></pre><p>Central Watchpost does not use forwarded client-IP or scheme headers for authorization, so no trusted-proxy list is needed or implemented. Loopback binding, TLS configuration, original-Host preservation, secure cookies, and firewall policy remain the deployment boundary.</p>
+<h2>Agent remote administration</h2><p>Remote access to the Watchpost Agent website is optional advanced functionality. The safest documented deployment keeps the agent bound to loopback behind a same-machine reverse proxy. First-run setup over that exposed interface is gated by a temporary bootstrap token supplied through a protected operator-controlled file.</p>
+<pre><code class="language-sh">token_dir="${XDG_RUNTIME_DIR:?XDG_RUNTIME_DIR is required}/watchpost-agent"
+install -d -m 700 "$token_dir"
+umask 077
+openssl rand -hex 24 > "$token_dir/setup-token"
+
+WATCHPOST_AGENT_SETUP_TOKEN_FILE="$token_dir/setup-token" \
+WATCHPOST_AGENT_SECURE_COOKIES=1 \
+WATCHPOST_AGENT_TRUSTED_PROXIES=127.0.0.0/8 \
+WATCHPOST_AGENT_ALLOW_CIDRS=192.0.2.0/24 \
+watchpost-agent --listen 127.0.0.1:8090</code></pre><pre><code class="language-nginx">server {
+listen 443 ssl http2;
+server_name agent.example.com;
+ssl_certificate /etc/letsencrypt/live/agent.example.com/fullchain.pem;
+ssl_certificate_key /etc/letsencrypt/live/agent.example.com/privkey.pem;
+
+location / {
+proxy_pass http://127.0.0.1:8090;
+proxy_http_version 1.1;
+proxy_set_header Host $host;
+proxy_set_header X-Forwarded-Proto $scheme;
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+}
+}</code></pre><p>With this loopback listener no non-loopback bind opt-in is needed. <code>XDG_RUNTIME_DIR</code> is a private per-user runtime directory owned by the account that runs Watchpost Agent; the token directory is created mode 700 and the token is written with <code>umask 077</code>, so the file is readable by the agent service account and by no other ordinary user. Only its hash is persisted, the token expires, and it is consumed atomically with first-administrator creation; a supplied token enforces the gate even on loopback. The authorized operator reads the raw token from the protected file over an operator-controlled channel (for example the SSH session) to complete initial setup. After the agent has provisioned the hashed bootstrap token, the source file can be removed (<code>rm "$token_dir/setup-token"</code>); removing it does not remove the already provisioned hash. The token is never returned by any API.</p><p>For a system-service deployment, create the directory and file with the same user and group as the service account at install time, never as a root-owned file the service cannot read:</p><pre><code class="language-sh">install -d -m 700 -o watchpost-agent -g watchpost-agent /run/watchpost-agent
+umask 077
+openssl rand -hex 24 > /run/watchpost-agent/setup-token
+chown watchpost-agent:watchpost-agent /run/watchpost-agent/setup-token</code></pre><p>Every header and setting matters: <code>WATCHPOST_AGENT_TRUSTED_PROXIES=127.0.0.0/8</code> names the same-machine nginx as the trusted proxy peer whose forwarded scheme, host, and client-address headers may be honoured. Configure the actual proxy-to-agent network, never arbitrary public ranges. <code>WATCHPOST_AGENT_ALLOW_CIDRS</code>/<code>WATCHPOST_AGENT_DENY_CIDRS</code> restrict verified client addresses separately, and <code>WATCHPOST_AGENT_SECURE_COOKIES=1</code> keeps cookies HTTPS-only. Headers from any peer outside the trusted set are ignored, so a client cannot spoof its origin through a forwarded header.</p>
+<h2>Reverse proxy on another machine (advanced)</h2><p>A reverse proxy on a different host requires a non-loopback agent listener, explicit opt-in, and a different trust model. Present it only as a separately reviewed deployment:</p><pre><code class="language-sh">token_dir="${XDG_RUNTIME_DIR:?XDG_RUNTIME_DIR is required}/watchpost-agent"
+install -d -m 700 "$token_dir"
+umask 077
+openssl rand -hex 24 > "$token_dir/setup-token"
+
+WATCHPOST_AGENT_EXPOSE=1 \
+WATCHPOST_AGENT_SETUP_TOKEN_FILE="$token_dir/setup-token" \
+WATCHPOST_AGENT_SECURE_COOKIES=1 \
+WATCHPOST_AGENT_TRUSTED_PROXIES=203.0.113.5/32 \
+WATCHPOST_AGENT_ALLOW_CIDRS=192.0.2.0/24 \
+watchpost-agent --listen 10.0.0.7:8090</code></pre><p>Here <code>WATCHPOST_AGENT_EXPOSE=1</code> is required because the listener is no longer loopback, and the agent prints a prominent warning. <code>WATCHPOST_AGENT_TRUSTED_PROXIES</code> must name the actual proxy host (for example <code>203.0.113.5/32</code>), the listener must be reachable only from that proxy, and host firewall policy must be narrowed to the proxy address. The bootstrap token, secure cookies, and client CIDRs apply exactly as in the loopback example. Do not reuse <code>127.0.0.0/8</code> here; it would not describe the real peer.</p>
+</article></main>

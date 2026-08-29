@@ -1,9 +1,9 @@
 {
-  "name": "docs/caddy",
-  "title": "Caddy HTTPS",
+  "name": "docs/verification",
+  "title": "Verification and hardening",
   "template": "templates/template.html",
-  "content": "content/docs/caddy.html",
-  "output": "public/docs/caddy.html",
+  "content": "content/docs/verification.html",
+  "output": "public/docs/verification.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/docs/caddy.html",
+    "content/docs/verification.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

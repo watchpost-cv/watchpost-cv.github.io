@@ -1,9 +1,9 @@
 {
-  "name": "docs/caddy",
-  "title": "Caddy HTTPS",
+  "name": "docs/posts",
+  "title": "Posts",
   "template": "templates/template.html",
-  "content": "content/docs/caddy.html",
-  "output": "public/docs/caddy.html",
+  "content": "content/docs/posts.html",
+  "output": "public/docs/posts.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/docs/caddy.html",
+    "content/docs/posts.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"
