@@ -86,6 +86,11 @@
       "template": "templates/template.html"
     },
     {
+      "name": "docs/company-deployment",
+      "title": "Company subdomain deployment",
+      "template": "templates/template.html"
+    },
+    {
       "name": "docs/security",
       "title": "Security model",
       "template": "templates/template.html"

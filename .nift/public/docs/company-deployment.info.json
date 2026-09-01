@@ -1,9 +1,9 @@
 {
-  "name": "docs/posts",
-  "title": "Posts",
+  "name": "docs/company-deployment",
+  "title": "Company subdomain deployment",
   "template": "templates/template.html",
-  "content": "content/docs/posts.html",
-  "output": "public/docs/posts.html",
+  "content": "content/docs/company-deployment.html",
+  "output": "public/docs/company-deployment.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/docs/posts.html",
+    "content/docs/company-deployment.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"
