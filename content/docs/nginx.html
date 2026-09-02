@@ -1,5 +1,5 @@
 <main class="shell docs-layout">@input("templates/docs-nav.html")<article class="docs-content"><p class="eyebrow">Docs · Deploy</p><h1>Serve Watchpost with nginx</h1><p class="lede">Terminate HTTPS at nginx while Watchpost listens only on the local loopback interface.</p>
-<h2>Start Watchpost</h2><pre><code class="language-sh">./watchpost --listen 127.0.0.1:8080 --secure-cookies</code></pre>
+<h2>Start Watchpost</h2><pre><code class="language-sh">./watchpost --host 127.0.0.1 --port 7334 --secure-cookies</code></pre>
 <h2>Server block</h2><pre><code class="language-nginx">server {
 listen 443 ssl http2;
 server_name watchpost.example.com;
@@ -7,7 +7,7 @@ ssl_certificate /etc/letsencrypt/live/watchpost.example.com/fullchain.pem;
 ssl_certificate_key /etc/letsencrypt/live/watchpost.example.com/privkey.pem;
 
 location / {
-proxy_pass http://127.0.0.1:8080;
+proxy_pass http://127.0.0.1:7334;
 proxy_http_version 1.1;
 proxy_set_header Host $host;
 }

@@ -18,6 +18,14 @@ grep -q 'WantedBy=multi-user.target' "$page"
 grep -q 'does not depend on any user login' "$page"
 grep -q 'root-owned <code>0600</code>' "$page"
 
+# Shared host/port configuration pattern: canonical --host/--port install
+# example, fresh loopback default, legacy form retained, and the recorded
+# listener surviving restart/reboot.
+grep -q 'service install --host 127.0.0.1 --port 7404' "$page"
+grep -q '127.0.0.1:7334' "$page"
+grep -q -- '--listen' "$page"
+grep -q 'recorded listener is the runtime listener across restart and reboot' "$page"
+
 # Verification page: model-based service evidence, no unsupported live claim.
 grep -q 'stateful layered fake-systemd transaction model' "$verification"
 grep -q 'has not been proven through an actual host reboot or against every systemd release' "$verification"
