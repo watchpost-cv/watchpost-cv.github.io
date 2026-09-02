@@ -26,6 +26,15 @@ grep -q '127.0.0.1:7334' "$page"
 grep -q -- '--listen' "$page"
 grep -q 'recorded listener is the runtime listener across restart and reboot' "$page"
 
+# Agent host/port pattern: the separate Watchpost Agent records canonical
+# --host/--port in its unit and defaults to loopback 127.0.0.1:7335, with the
+# WATCHPOST_AGENT_HOST/WATCHPOST_AGENT_PORT environment and legacy --listen
+# retained.
+grep -q 'watchpost-agent service install --host 127.0.0.1 --port 7405' "$page"
+grep -q '127.0.0.1:7335' "$page"
+grep -q 'WATCHPOST_AGENT_HOST' "$page"
+grep -q 'WATCHPOST_AGENT_LISTEN' "$page"
+
 # Verification page: model-based service evidence, no unsupported live claim.
 grep -q 'stateful layered fake-systemd transaction model' "$verification"
 grep -q 'has not been proven through an actual host reboot or against every systemd release' "$verification"

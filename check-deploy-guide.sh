@@ -17,7 +17,7 @@ grep -q 'independently' "$page"
 grep -q 'Type: A' "$page"
 grep -q 'Type: CNAME' "$page"
 grep -q 'WATCHPOST_SETUP_TOKEN' "$page"
-grep -q 'ssh -L 8090:127.0.0.1:8090' "$page"
+grep -q 'ssh -L 7335:127.0.0.1:7335' "$page"
 
 # The Agent trust boundary must never be described as safely public by default.
 grep -q 'must not be casually exposed' "$page"
