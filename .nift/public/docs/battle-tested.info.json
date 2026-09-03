@@ -1,9 +1,9 @@
 {
-  "name": "docs/limitations",
-  "title": "Current limitations",
+  "name": "docs/battle-tested",
+  "title": "Battle tested",
   "template": "templates/template.html",
-  "content": "content/docs/limitations.html",
-  "output": "public/docs/limitations.html",
+  "content": "content/docs/battle-tested.html",
+  "output": "public/docs/battle-tested.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -12,7 +12,7 @@
   "pagination-separator": "",
   "pagination-pages": 0,
   "dependencies": [
-    "content/docs/limitations.html",
+    "content/docs/battle-tested.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"

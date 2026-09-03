@@ -18,8 +18,6 @@
   ],
   "reqs": [
     "public/architecture.html",
-    "public/assets/css/style.css",
-    "public/assets/js/script.js",
     "public/docs.html",
     "public/index.html",
     "public/product.html",
