@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# CSS contract check for content/assets/css/style.css.
+# CSS contract check for public/assets/css/style.css.
 #
 # Guards the shared heading typography selector group and the documentation
 # overflow rule against accidental mechanical edits. A previous string
@@ -7,7 +7,7 @@
 # ".hero h1,.page-hero h1,.docs-content{overflow-x:clip}", stripping heading
 # typography from the homepage and ordinary page heroes.
 set -u
-CSS="content/assets/css/style.css"
+CSS="public/assets/css/style.css"
 if [ ! -f "$CSS" ]; then
   echo "FAIL stylesheet $CSS not found"; exit 1
 fi
