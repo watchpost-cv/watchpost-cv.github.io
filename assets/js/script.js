@@ -100,11 +100,13 @@
     const copy = document.createElement('button');
     copy.className = 'copy-button';
     copy.type = 'button';
-    copy.textContent = 'Copy';
+    copy.setAttribute('aria-label', 'Copy code');
+    copy.title = 'Copy code';
+    copy.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="8" y="8" width="11" height="11" rx="2"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"></path></svg>';
     copy.addEventListener('click', async () => {
       await navigator.clipboard.writeText(source);
-      copy.textContent = 'Copied';
-      setTimeout(() => { copy.textContent = 'Copy'; }, 1400);
+      copy.setAttribute('aria-label', 'Copied');
+      setTimeout(() => { copy.setAttribute('aria-label', 'Copy code'); }, 1400);
     });
     pre.append(copy);
   });
