@@ -97,6 +97,10 @@
       fragment.append(document.createTextNode(source.slice(cursor)));
       code.replaceChildren(fragment);
     }
+    const shell = document.createElement('div');
+    shell.className = 'code-copy-shell';
+    pre.before(shell);
+    shell.append(pre);
     const copy = document.createElement('button');
     copy.className = 'copy-button';
     copy.type = 'button';
@@ -108,7 +112,7 @@
       copy.setAttribute('aria-label', 'Copied');
       setTimeout(() => { copy.setAttribute('aria-label', 'Copy code'); }, 1400);
     });
-    pre.append(copy);
+    shell.append(copy);
   });
   applyTheme();
 })();
