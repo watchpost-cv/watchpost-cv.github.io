@@ -114,6 +114,12 @@
       "name": "docs/battle-tested",
       "title": "Battle tested",
       "template": "templates/template.html"
-    }
+    },
+    {"name":"install","title":"install","content-ext":".sh","output-ext":".sh"},
+    {"name":"download","title":"download","content-ext":".sh","output-ext":".sh"},
+    {"name":"update","title":"update","content-ext":".sh","output-ext":".sh"},
+    {"name":"agent-install","title":"agent-install","content-ext":".sh","output-ext":".sh"},
+    {"name":"agent-download","title":"agent-download","content-ext":".sh","output-ext":".sh"},
+    {"name":"agent-update","title":"agent-update","content-ext":".sh","output-ext":".sh"}
   ]
 }

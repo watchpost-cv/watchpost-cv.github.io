@@ -352,3 +352,12 @@ New or revised pages must be registered in `.nift/tracked.json` and the
 navigation in `templates/docs-nav.html`, then rebuilt with Nift and committed
 in `public/` before the source repository. Existing pages may consolidate
 moved material into `docs/posts` rather than keep competing explanations.
+# Release-script deployment
+
+This site publishes separate verified lifecycle scripts for Watchpost and
+Watchpost Agent. Build with Nift, commit the generated `public/` repository
+first, then commit the website source and gitlink. Before tagging either
+application, deploy and compare the relevant live scripts at
+`https://watchpost.cv` with generated output, run syntax and fixture tests, and
+confirm the latest stable GitHub endpoint resolves the intended repository.
+Server and Agent versions remain independent.

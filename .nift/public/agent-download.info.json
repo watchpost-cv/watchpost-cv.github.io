@@ -1,0 +1,18 @@
+{
+  "name": "agent-download",
+  "title": "agent-download",
+  "template": "",
+  "content": "content/agent-download.sh",
+  "output": "public/agent-download.sh",
+  "minify": false,
+  "minify-version": 0,
+  "pagination": false,
+  "pagination-items-per-page": 0,
+  "pagination-template": "",
+  "pagination-separator": "",
+  "pagination-pages": 0,
+  "dependencies": [
+    "content/agent-download.sh"
+  ],
+  "reqs": []
+}
