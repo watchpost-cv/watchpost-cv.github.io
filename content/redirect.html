@@ -1,0 +1,30 @@
+<main class="redirect-page" data-watchpost-launcher data-main-default-port="7334" data-agent-default-port="7335">
+  <section class="redirect-card" aria-labelledby="redirect-title">
+    <p class="eyebrow">MY WATCHPOST</p>
+    <h1 id="redirect-title">Open your local Watchpost.</h1>
+    <p class="redirect-lede">This page remembers the local ports used by Watchpost and Watchpost Agent in this browser.</p>
+    <div class="redirect-error" data-redirect-error role="alert" hidden></div>
+    <form class="redirect-form" data-redirect-form novalidate>
+      <div class="redirect-port-grid">
+        <div class="redirect-field">
+          <label for="watchpost-local-port">Watchpost port</label>
+          <div class="redirect-port-row"><span>localhost:</span><input id="watchpost-local-port" name="main-port" type="number" min="1" max="65535" step="1" inputmode="numeric" autocomplete="off" value="7334"></div>
+          <p class="redirect-help">Default: <code>7334</code>.</p>
+        </div>
+        <div class="redirect-field">
+          <label for="watchpost-agent-port">Agent port</label>
+          <div class="redirect-port-row"><span>localhost:</span><input id="watchpost-agent-port" name="agent-port" type="number" min="1" max="65535" step="1" inputmode="numeric" autocomplete="off" value="7335"></div>
+          <p class="redirect-help">Default: <code>7335</code>.</p>
+        </div>
+      </div>
+      <div class="redirect-actions">
+        <button class="primary" type="submit">Save ports</button>
+        <button class="secondary" type="button" data-open-main>Open Watchpost</button>
+        <button class="secondary" type="button" data-open-agent>Open Agent</button>
+        <button class="secondary" type="button" data-reset-ports>Use default ports</button>
+      </div>
+    </form>
+    <p class="redirect-status" data-redirect-status>Preparing Watchpost…</p>
+    <p class="redirect-note">Port preferences are stored only in this browser. No Watchpost configuration or credentials are sent to watchpost.cv.</p>
+  </section>
+</main>
