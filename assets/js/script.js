@@ -116,3 +116,31 @@
   });
   applyTheme();
 })();
+
+// Watchpost local redirect launcher
+(()=>{
+  const valid=value=>{const text=String(value??'').trim();if(!/^\d+$/.test(text))return null;const n=Number(text);return Number.isInteger(n)&&n>=1&&n<=65535?n:null};
+  function init(){
+    const root=document.querySelector('[data-watchpost-launcher]');if(!root)return;
+    const mainDefault=valid(root.dataset.mainDefaultPort), agentDefault=valid(root.dataset.agentDefaultPort);
+    const mainKey='watchpost-local-port', agentKey='watchpost-agent-local-port';
+    const form=root.querySelector('[data-redirect-form]'), main=form?.querySelector('[name="main-port"]'), agent=form?.querySelector('[name="agent-port"]');
+    const error=root.querySelector('[data-redirect-error]'), status=root.querySelector('[data-redirect-status]');
+    const read=(key,def)=>{try{return valid(localStorage.getItem(key))||def}catch{return def}};
+    const save=(key,val)=>{try{localStorage.setItem(key,String(val))}catch{}};
+    const open=port=>window.location.replace(`http://localhost:${port}/`);
+    const raw=String(window.location.search||'').replace(/^\?/,''); const params=new URLSearchParams(raw);
+    const mode=!raw?'main':(raw==='config'||params.has('config'))?'config':(raw==='agent'||params.has('agent'))?'agent':'invalid';
+    const mainPort=read(mainKey,mainDefault), agentPort=read(agentKey,agentDefault); if(main)main.value=String(mainPort);if(agent)agent.value=String(agentPort);
+    if(mode==='main'){if(status)status.textContent=`Opening Watchpost on localhost:${mainPort}…`;open(mainPort);return}
+    if(mode==='agent'){if(status)status.textContent=`Opening Watchpost Agent on localhost:${agentPort}…`;open(agentPort);return}
+    root.classList.add('redirect-config-mode');
+    const showError=msg=>{if(error){error.textContent=msg;error.hidden=false}}; if(mode==='invalid')showError('The redirect parameters were not recognised. Use ?config or ?agent.');
+    const savePorts=()=>{const mp=valid(main?.value),ap=valid(agent?.value);if(!mp||!ap){showError('Both ports must be whole numbers from 1 to 65535.');return null}save(mainKey,mp);save(agentKey,ap);if(error)error.hidden=true;return [mp,ap]};
+    form?.addEventListener('submit',e=>{e.preventDefault();savePorts()});
+    root.querySelector('[data-open-main]')?.addEventListener('click',()=>{const p=savePorts();if(p)open(p[0])});
+    root.querySelector('[data-open-agent]')?.addEventListener('click',()=>{const p=savePorts();if(p)open(p[1])});
+    root.querySelector('[data-reset-ports]')?.addEventListener('click',()=>{try{localStorage.removeItem(mainKey);localStorage.removeItem(agentKey)}catch{}if(main)main.value=String(mainDefault);if(agent)agent.value=String(agentDefault);if(error)error.hidden=true});
+  }
+  document.addEventListener('DOMContentLoaded',init);
+})();
