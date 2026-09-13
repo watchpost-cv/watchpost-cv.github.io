@@ -7,5 +7,5 @@ watchpost-agent setup --email-file /run/secrets/agent-email --password-file /run
 watchpost-agent info --json
 watchpost-agent configure --interval 60 --filesystems /,/srv
 watchpost-agent pair --server https://watchpost.example
-watchpost-agent reset --auth --confirm "WATCHPOST-AGENT AUTH"
-watchpost-agent reset --all --confirm "WATCHPOST-AGENT ALL"</code></pre><p>Stop the relevant service before reset. Timestamped backups are retained. Full agent reset does not revoke its remote credential; revoke a lost installation centrally.</p></article></main>
+sudo watchpost-agent reset --auth --confirm "WATCHPOST-AGENT AUTH"
+sudo watchpost-agent reset --all --confirm "WATCHPOST-AGENT ALL"</code></pre><p>Stop the relevant service before reset. Agent authentication reset can discard an incompatible authentication payload while preserving valid pairing and collector state; full reset can recover a damaged state file. Both retain timestamped backups and preserve service ownership. Make sure the installed executable has been rebuilt or updated; a source checkout does not replace the command on <code>PATH</code>. Full agent reset does not revoke its remote credential; revoke a lost installation centrally.</p></article></main>
