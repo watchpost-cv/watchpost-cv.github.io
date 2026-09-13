@@ -1,4 +1,7 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Command-line administration · Watchpost</title><link rel="stylesheet" href="../assets/css/style.css"></head><body><main class="shell docs-layout"><article class="docs-content"><p class="eyebrow">Docs · Operate</p><h1>Command-line administration</h1><pre><code>watchpost setup --email-file /run/secrets/admin-email --password-file /run/secrets/admin-password
 watchpost config show --json
 watchpost reset --auth --confirm "WATCHPOST AUTH"
-watchpost reset --all --confirm "WATCHPOST ALL"</code></pre><p>The agent additionally supports setup, configure, pair, rotate, unpair and JSON status commands. Stop services before resets; backups are retained.</p><p><a href="../docs.html">Back to documentation</a> · <a href="https://gantry.cv">Gantry</a></p></article></main></body></html>
+watchpost reset --all --confirm "WATCHPOST ALL"
+
+sudo watchpost-agent reset --auth --confirm "WATCHPOST-AGENT AUTH"
+sudo watchpost-agent reset --all --confirm "WATCHPOST-AGENT ALL"</code></pre><p>The agent additionally supports setup, configure, pair, rotate, unpair and JSON status commands. Stop services before resets. Agent authentication reset can discard incompatible authentication data; full reset can recover a damaged state file. Both retain backups and preserve service ownership. Update the installed executable before using commands from newer source. Full agent reset does not centrally revoke a lost machine.</p><p><a href="../docs.html">Back to documentation</a> · <a href="https://gantry.cv">Gantry</a></p></article></main></body></html>
