@@ -1,0 +1,11 @@
+<main class="shell docs-layout">@input("templates/docs-nav.html")<article class="docs-content"><p class="eyebrow">Docs · Operate</p><h1>Command-line administration</h1><p>Watchpost and Watchpost Agent can be provisioned and maintained without browser automation.</p><pre><code>watchpost setup --email-file /run/secrets/admin-email --password-file /run/secrets/admin-password
+watchpost config show --json
+watchpost reset --auth --confirm "WATCHPOST AUTH"
+watchpost reset --all --confirm "WATCHPOST ALL"
+
+watchpost-agent setup --email-file /run/secrets/agent-email --password-file /run/secrets/agent-password
+watchpost-agent info --json
+watchpost-agent configure --interval 60 --filesystems /,/srv
+watchpost-agent pair --server https://watchpost.example
+watchpost-agent reset --auth --confirm "WATCHPOST-AGENT AUTH"
+watchpost-agent reset --all --confirm "WATCHPOST-AGENT ALL"</code></pre><p>Stop the relevant service before reset. Timestamped backups are retained. Full agent reset does not revoke its remote credential; revoke a lost installation centrally.</p></article></main>

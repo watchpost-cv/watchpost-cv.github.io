@@ -28,7 +28,7 @@ if grep -qi 'safe to expose.*agent.*public\|expose.*agent.*publicly' "$page"; th
   exit 1
 fi
 
-for leftover in '@pathto' '@input' '@include'; do
+for leftover in '@path' '@input' '@include'; do
   if grep -q "$leftover" "$generated"; then
     echo "generated output contains unresolved $leftover" >&2
     exit 1

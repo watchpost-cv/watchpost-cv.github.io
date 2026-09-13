@@ -145,6 +145,11 @@
       "output-ext": ".sh"
     },
     {
+      "name": "docs/cli",
+      "title": "Command-line administration",
+      "template": "templates/template.html"
+    },
+    {
       "name": "agent-download",
       "title": "agent-download",
       "content-ext": ".sh",
