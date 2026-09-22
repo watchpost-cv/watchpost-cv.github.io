@@ -160,6 +160,11 @@
       "title": "agent-update",
       "content-ext": ".sh",
       "output-ext": ".sh"
+    },
+    {
+      "name": "docs/clustering",
+      "title": "clustering",
+      "template": "templates/template.html"
     }
   ]
 }
