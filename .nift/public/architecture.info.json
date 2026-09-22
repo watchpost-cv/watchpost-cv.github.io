@@ -11,6 +11,8 @@
   "pagination-template": "",
   "pagination-separator": "",
   "pagination-pages": 0,
+  "project-fingerprint": "",
+  "hierarchy-fingerprint": "",
   "dependencies": [
     "content/architecture.html",
     "templates/head.html",
@@ -18,6 +20,9 @@
   ],
   "reqs": [
     "public/architecture.html",
+    "public/assets/css/style.css",
+    "public/assets/images/favicon.svg",
+    "public/assets/js/script.js",
     "public/docs.html",
     "public/index.html",
     "public/product.html",

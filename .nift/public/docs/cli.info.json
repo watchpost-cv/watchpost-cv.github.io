@@ -1,9 +1,9 @@
 {
-  "name": "docs/agent-architecture",
-  "title": "Agent architecture",
+  "name": "docs/cli",
+  "title": "Command-line administration",
   "template": "templates/template.html",
-  "content": "content/docs/agent-architecture.html",
-  "output": "public/docs/agent-architecture.html",
+  "content": "content/docs/cli.html",
+  "output": "public/docs/cli.html",
   "minify": false,
   "minify-version": 0,
   "pagination": false,
@@ -14,7 +14,7 @@
   "project-fingerprint": "",
   "hierarchy-fingerprint": "",
   "dependencies": [
-    "content/docs/agent-architecture.html",
+    "content/docs/cli.html",
     "templates/docs-nav.html",
     "templates/head.html",
     "templates/template.html"
